@@ -7,4 +7,6 @@ mongoose.plugin(mongoDBErrors);
 mongoose.connect(process.env.MONGOURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+}, function(req,res){
+  
 });
