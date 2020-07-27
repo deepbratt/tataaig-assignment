@@ -1,15 +1,23 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import App from "./App";
-
+import Home from "./screens/home";
+import Meals from "./screens/meals";
 const Routes = () => {
+  const isLoggedIn = useSelector((state) => state.userReducer.isLoggedin);
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={App} />
-        <Route path="/page/:id" exact component={App} />
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <Switch>
+          {!isLoggedIn ? (
+            <Route path="/" exact component={Home} />
+          ) : (
+            <Route path="/" exact component={Meals} />
+          )}
+        </Switch>
+      </Router>
+    </div>
   );
 };
 export default Routes;

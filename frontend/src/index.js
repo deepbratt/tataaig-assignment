@@ -3,8 +3,8 @@ import { Spinner } from "react-bootstrap";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import App from "./App";
 import "./index.css";
-import Routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 import persist from "./store";
 
@@ -16,7 +16,7 @@ ReactDOM.render(
         loading={<Spinner animation="border" variant="warning" />}
         persistor={persistStore.persistor}
       >
-        <Routes />
+        <App />
       </PersistGate>
     </Provider>
   </React.StrictMode>,

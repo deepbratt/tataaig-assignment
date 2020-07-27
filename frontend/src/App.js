@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "./App.css";
-import Main from "./screens/home";
+import Routes from "./routes";
 function App() {
   return (
     <div className="App">
-      <Main />
+      <Routes />
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Alert, Col, Container, Row } from "react-bootstrap";
-import { LoginForm, SignupForm } from "../components";
-function Home() {
+import { AddMealForm, TableComponent } from "../components";
+function Meals() {
+  const [data, setData] = useState([]);
   return (
     <Fragment>
       <div
@@ -14,12 +15,12 @@ function Home() {
 
       <Container padder={10} style={{ marginBottom: 10 }}>
         <Row>
-          <Col sm={12} md={6}>
-            <LoginForm />
+          <Col md={8} sm={12}>
+            <TableComponent />
           </Col>
 
-          <Col md={6} sm={12}>
-            <SignupForm />
+          <Col md={4} sm={12}>
+            <AddMealForm />
           </Col>
         </Row>
       </Container>
@@ -27,4 +28,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Meals;
