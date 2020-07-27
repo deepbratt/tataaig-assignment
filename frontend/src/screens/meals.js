@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { Alert, Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Alert, Button, Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import allActions from "../actions";
 import { AddMealForm, TableComponent } from "../components";
 import { API_URL } from "../utils/gen.utils";
-
 function Meals() {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const reduxStateChange = useSelector((state) => state);
@@ -25,13 +26,21 @@ function Meals() {
         });
     })();
   }, [data, user]);
+
+  const logout = async () => {
+    await dispatch(allActions.userActions.Logout());
+  };
   return (
     <Fragment>
       <div
         style={{ alignContent: "center", flex: 1, justifyContent: "center" }}
       >
         <Alert key={1} variant="primary">
-          Welcome to Diet Checker
+          Welcome <b>{user.firstName}</b> <b>{user.lastName}</b> to Diet Checker{" "}
+          <Button style={{ height: 40, padding: 5 }} onClick={logout}>
+            {" "}
+            logout{" "}
+          </Button>
         </Alert>
       </div>
 

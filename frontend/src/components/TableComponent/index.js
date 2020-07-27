@@ -2,12 +2,16 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import SingleRow from "./singleRow";
 const TableComponent = (props) => {
+  let totalCal = 0;
+  for (let i = 0; i < props.data.length; i++) {
+    totalCal += props.data[i]["mealCalorie"];
+  }
   return (
     <Table striped hover responsive="md" cellSpacing={5} cellPadding={5}>
       <thead>
         <tr
           style={{
-            backgroundColor: "#ff742b",
+            backgroundColor: totalCal > 2000 ? "red" : "green",
             color: "#fff",
             alignItems: "flex-start",
             height: 20,

@@ -17,6 +17,8 @@ const AddMealForm = (props) => {
         userId: user._id,
       })
       .then((res) => {
+        setmMaltext(null);
+        setMealCalorie(null);
         console.log(res.data);
       });
   };
@@ -39,7 +41,7 @@ const AddMealForm = (props) => {
 
             <Form.Group controlId="formBasicCalorie">
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Enter Calories"
                 name="mealCalorie"
                 defaultValue={mealCalorie}
