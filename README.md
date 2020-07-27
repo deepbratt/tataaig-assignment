@@ -20,4 +20,4 @@ step 3: yarn start or npm start (to start the frontend api server)
 ##SCREENSHOTS
 ### Mobile SCREENSHOTS
 ![image](https://github.com/deepbratt/tataaig-assignment/blob/master/frontend/public/meals.png)
-![image]()
+![image](https://github.com/deepbratt/tataaig-assignment/blob/master/frontend/public/auth.png)
