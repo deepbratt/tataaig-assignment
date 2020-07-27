@@ -24,7 +24,9 @@ const TableComponent = (props) => {
       </thead>
       <tbody>
         {props.data !== null ? (
-          <SingleRow />
+          props.data.map((tbldata, tbindex) => {
+            return <SingleRow data={tbldata} key={tbindex} id={tbindex + 1} />;
+          })
         ) : (
           <tr>
             <td colSpan={3}>no data!</td>

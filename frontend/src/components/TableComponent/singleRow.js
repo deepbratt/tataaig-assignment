@@ -1,5 +1,6 @@
 import React from "react";
 const SingleRow = (props) => {
+  console.log(props);
   return (
     <tr
       style={{
@@ -10,9 +11,9 @@ const SingleRow = (props) => {
         whiteSpace: "normal",
       }}
     >
-      <td>1</td>
-      <td>rice</td>
-      <td>150</td>
+      <td>#{props.id}</td>
+      <td>{props.data.mealtext}</td>
+      <td>{props.data.mealCalorie}</td>
       <td>Action</td>
     </tr>
   );

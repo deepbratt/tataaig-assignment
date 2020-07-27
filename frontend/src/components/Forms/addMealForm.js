@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { API_URL } from "../../utils/gen.utils";
-function AddMealForm() {
+const AddMealForm = (props) => {
   const user = useSelector((state) => state.userReducer.user);
   const [mealtext, setmMaltext] = useState(null);
   const [mealCalorie, setMealCalorie] = useState(null);
@@ -55,6 +55,6 @@ function AddMealForm() {
       </Card>
     </Container>
   );
-}
+};
 
 export default AddMealForm;
