@@ -4,19 +4,27 @@ import { Alert, Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { AddMealForm, TableComponent } from "../components";
 import { API_URL } from "../utils/gen.utils";
+
 function Meals() {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
-  const user = useSelector((state) => state.userReducer.user);
+  const reduxStateChange = useSelector((state) => state);
+  const user = reduxStateChange.userReducer.user;
   useEffect(() => {
+    if (!data) {
+      return false;
+    }
     (async () => {
       setLoader(true);
-      axios.post(`${API_URL}/meals/get`, { userId: user._id }).then((res) => {
-        setData(res.data);
-        return false;
-      });
+      await axios
+        .post(`${API_URL}/meals/get`, { userId: user._id })
+        .then((res) => {
+          setData(res.data);
+          setLoader(false);
+          return false;
+        });
     })();
-  }, [user, data]);
+  }, [data, user]);
   return (
     <Fragment>
       <div

@@ -1,6 +1,15 @@
+import axios from "axios";
 import React from "react";
+import { BsFillTrashFill } from "react-icons/bs";
+// import { MdModeEdit } from "react-icons/md";
+import { API_URL } from "../../utils/gen.utils";
 const SingleRow = (props) => {
-  console.log(props);
+  const removeItem = (itmId) => {
+    console.log("rem: ", itmId);
+    axios.delete(`${API_URL}/meals/remove/${itmId}`).then((res) => {
+      console.log("successfully removed", res.data);
+    });
+  };
   return (
     <tr
       style={{
@@ -14,7 +23,17 @@ const SingleRow = (props) => {
       <td>#{props.id}</td>
       <td>{props.data.mealtext}</td>
       <td>{props.data.mealCalorie}</td>
-      <td>Action</td>
+      <td>
+        <span>
+          {/* <MdModeEdit size={24} /> */}
+        </span>
+        <span
+          onClick={() => removeItem(props.data._id)}
+          style={{ cursor: "pointer" }}
+        >
+          <BsFillTrashFill size={24} />
+        </span>
+      </td>
     </tr>
   );
 };
